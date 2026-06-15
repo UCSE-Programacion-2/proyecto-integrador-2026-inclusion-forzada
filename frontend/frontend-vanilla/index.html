@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>La Vie En Rose</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            rose:    { light: '#f0d0da', DEFAULT: '#e8a0b4', dark: '#c97a8d' },
+            cream:   '#fff5f7',
+            espresso:'#3a2027',
+          },
+          fontFamily: {
+            heading: ['"Playfair Display"', 'serif'],
+            body:    ['Lato', 'sans-serif'],
+          },
+        },
+      },
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+</head>
+
+<body class="bg-cream">
+    <nav class="bg-cream border-b border-rose-light">
+        <div class="max-w-6xl mx-auto px-6 flex items-center justify-between h-16">
+            <a href="index.html" class="font-heading text-2xl text-rose-dark tracking-wide">
+                La Vie En Rose 
+            </a>
+            <div class="hidden md:flex items-center gap-8">
+                <a href="index.html"    class="font-body text-xs uppercase tracking-widest text-espresso hover:text-rose-dark transition-colors">Inicio</a>
+                <a href="catalogo.html" class="font-body text-xs uppercase tracking-widest text-espresso hover:text-rose-dark transition-colors">Menú</a>
+                <a href="carrito.html"  class="flex items-center gap-2 font-body text-xs uppercase tracking-widest text-espresso hover:text-rose-dark transition-colors">Carrito</a>
+            </div>
+            <button class="md:hidden text-espresso" aria-label="Abrir menú">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <!---------------------------------------------------------->
+
+    <main>
+        <section
+      class="relative min-h-[90vh] flex items-center justify-center text-center"
+      style="
+        background-image: url('https://lh3.googleusercontent.com/gps-cs-s/APNQkAFw7BVMhsMcDd9iT4JC4dioCTn9cpxUWrTyCdbIBtSfejIHvusl70lSrfaSS55nv50r3LCWw0Z2MuFsWmN8gUIKfcnK15J_zNvKmFQu_7MiiYs4MMb5zxYLoecSqeHn4IvXtRj-=s563-k-no');
+        background-size: cover;
+        background-position: center;"
+    >
+      <div class="absolute inset-0 bg-espresso/60"></div>
+      <div class="relative z-10 px-6 max-w-2xl mx-auto">
+        <p class="font-body text-xs uppercase tracking-[0.3em] text-rose mb-4">Cafetería artesanal · Jujuy</p>
+        <h1 class="font-heading text-5xl md:text-7xl text-cream leading-tight mb-6">
+          La Vie<br/><em>En Rose</em>
+        </h1>
+        <p class="font-body text-base text-rose-light/80 mb-10 leading-relaxed">
+          La Cafeteria mas coquette y rosa<br class="hidden md:block"/> en el corazón de Jujuy.
+        </p>
+        <a 
+            href="catalogo.html" class="inline-block font-body text-xs uppercase tracking-widest bg-rose-dark hover:bg-rose transition-colors text-white px-10 py-4 rounded-full">Ver el menú
+        </a>
+      </div>
+    </section>
+ 
+    <section class="max-w-6xl mx-auto px-6 py-20">
+      <div class="text-center mb-12">
+        <p class="font-body text-xs uppercase tracking-[0.25em] text-rose-dark mb-2">Lo más pedido</p>
+        <h2 class="font-heading text-4xl text-espresso">Destacados</h2>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <article class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+          <div class="h-48 bg-rose-light/60 flex items-center justify-center">
+            <span class="text-5xl">☕</span>
+          </div>
+          <div class="p-5">
+            <span class="font-body text-[11px] uppercase tracking-widest text-rose-dark">Cafés</span>
+            <h3 class="font-heading text-lg text-espresso mt-1 mb-1">(tipo de cafe)</h3>
+            <p class="font-body text-xs text-espresso/50 mb-4 leading-relaxed">(descripcion)</p>
+            <div class="flex items-center justify-between">
+              <span class="font-body font-bold text-espresso">(precio)</span>
+              <a href="detalle.html" class="font-body text-xs uppercase tracking-widest text-rose-dark hover:text-rose transition-colors">Ver más →</a>
+            </div>
+          </div>
+        </article>
+ 
+        <article class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+          <div class="h-48 bg-rose-light/60 flex items-center justify-center">
+            <span class="text-5xl">☕</span>
+          </div>
+          <div class="p-5">
+            <span class="font-body text-[11px] uppercase tracking-widest text-rose-dark">Cafés</span>
+            <h3 class="font-heading text-lg text-espresso mt-1 mb-1">(tipo de cafe)</h3>
+            <p class="font-body text-xs text-espresso/50 mb-4 leading-relaxed">(descripcion)</p>
+            <div class="flex items-center justify-between">
+              <span class="font-body font-bold text-espresso">(precio)</span>
+              <a href="detalle.html" class="font-body text-xs uppercase tracking-widest text-rose-dark hover:text-rose transition-colors">Ver más →</a>
+            </div>
+          </div>
+        </article>
+ 
+        <article class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+          <div class="h-48 bg-rose-light/60 flex items-center justify-center">
+            <span class="text-5xl">☕</span>
+          </div>
+          <div class="p-5">
+            <span class="font-body text-[11px] uppercase tracking-widest text-rose-dark">Cafés</span>
+            <h3 class="font-heading text-lg text-espresso mt-1 mb-1">(tipo de cafe)</h3>
+            <p class="font-body text-xs text-espresso/50 mb-4 leading-relaxed">(descripcion)</p>
+            <div class="flex items-center justify-between">
+              <span class="font-body font-bold text-espresso">(precio)</span>
+              <a href="detalle.html" class="font-body text-xs uppercase tracking-widest text-rose-dark hover:text-rose transition-colors">Ver más →</a>
+            </div>
+          </div>
+        </article>
+ 
+        <article class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+          <div class="h-48 bg-rose-light/60 flex items-center justify-center">
+            <span class="text-5xl">☕</span>
+          </div>
+          <div class="p-5">
+            <span class="font-body text-[11px] uppercase tracking-widest text-rose-dark">Cafés</span>
+            <h3 class="font-heading text-lg text-espresso mt-1 mb-1">(tipo de cafe)</h3>
+            <p class="font-body text-xs text-espresso/50 mb-4 leading-relaxed">(descripcion)</p>
+            <div class="flex items-center justify-between">
+              <span class="font-body font-bold text-espresso">(precio)</span>
+              <a href="detalle.html" class="font-body text-xs uppercase tracking-widest text-rose-dark hover:text-rose transition-colors">Ver más →</a>
+            </div>
+          </div>
+        </article>
+      </div>
+ 
+      <div class="text-center mt-12">
+        <a
+          href="catalogo.html" class="inline-block font-body text-xs uppercase tracking-widest border border-rose-dark text-rose-dark hover:bg-rose-dark hover:text-white transition-colors px-10 py-4 rounded-full">Ver menú completo
+        </a>
+      </div>
+    </section>
+  </main>
+
+    <!---------------------------------------------------------->
+    
+    <footer class="bg-espresso text-rose-light pt-12 pb-6">
+        <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8 pb-8 border-b border-rose-dark/30">
+            <div>
+                <p class="font-heading text-xl text-rose mb-3">La Vie En Rose</p>
+                <p class="font-body text-sm text-rose-light/60 leading-relaxed">La Cafeteria mas coquette y rosa en el corazón de Jujuy.</p>
+            </div>
+
+            <div>
+                <p class="font-body text-xs uppercase tracking-widest text-rose mb-3">Menú</p>
+                <ul class="space-y-2">
+                    <li><a href="catalogo.html" class="font-body text-sm text-rose-light/60 hover:text-rose transition-colors">Cafés e infusiones</a></li>
+                    <li><a href="catalogo.html" class="font-body text-sm text-rose-light/60 hover:text-rose transition-colors">Tortas y postres</a></li>
+                    <li><a href="catalogo.html" class="font-body text-sm text-rose-light/60 hover:text-rose transition-colors">Sándwiches</a></li>
+                    <li><a href="catalogo.html" class="font-body text-sm text-rose-light/60 hover:text-rose transition-colors">Combos</a></li>
+                </ul>
+            </div>
+            <div>
+                <p class="font-body text-xs uppercase tracking-widest text-rose mb-3">Contacto</p>
+                <ul class="space-y-2">
+                    <li class="font-body text-sm text-rose-light/60">📍 San Salvador de Jujuy</li>
+                    <li><a href="https://www.instagram.com/lavieenrosejujuy" class="font-body text-sm text-rose-light/60 hover:text-rose transition-colors">📷 @lavieenrosejujuy</a></li>
+                </ul>
+            </div>
+        </div>
+        <p class="text-center font-body text-xs text-rose-light/30 pt-6">© 2026 La Vie En Rose · Todos los derechos reservados</p>
+    </footer>
+</body>
+</html>
+
+
+
+

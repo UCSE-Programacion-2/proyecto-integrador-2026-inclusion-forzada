@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>La Vie En Rose</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            rose:    { light: '#f0d0da', DEFAULT: '#e8a0b4', dark: '#c97a8d' },
+            cream:   '#fff5f7',
+            espresso:'#3a2027',
+          },
+          fontFamily: {
+            heading: ['"Playfair Display"', 'serif'],
+            body:    ['Lato', 'sans-serif'],
+          },
+        },
+      },
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+</head>
+
+<body class="bg-cream">
+    <nav class="bg-cream border-b border-rose-light">
+        <div class="max-w-6xl mx-auto px-6 flex items-center justify-between h-16">
+            <a href="index.html" class="font-heading text-2xl text-rose-dark tracking-wide">
+                La Vie En Rose 
+            </a>
+            <div class="hidden md:flex items-center gap-8">
+                <a href="index.html"    class="font-body text-xs uppercase tracking-widest text-espresso hover:text-rose-dark transition-colors">Inicio</a>
+                <a href="catalogo.html" class="font-body text-xs uppercase tracking-widest text-espresso hover:text-rose-dark transition-colors">Menú</a>
+                <a href="carrito.html"  class="flex items-center gap-2 font-body text-xs uppercase tracking-widest text-espresso hover:text-rose-dark transition-colors">Carrito</a>
+            </div>
+            <button class="md:hidden text-espresso" aria-label="Abrir menú">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <!---------------------------------------------------------->
+
+    <main class="flex-1 p-8">
+
+      <!-- Encabezado -->
+      <div class="flex items-center justify-between mb-8">
+        <div>
+          <p class="font-body text-xs uppercase tracking-[0.25em] text-rose-dark mb-1">Backoffice</p>
+          <h1 class="font-heading text-3xl text-espresso">Productos</h1>
+        </div>
+        <button
+          onclick="document.getElementById('modal').classList.remove('hidden')"
+          class="font-body text-xs uppercase tracking-widest bg-rose-dark hover:bg-rose transition-colors text-white px-6 py-3 rounded-full"
+        >
+          + Nuevo producto
+        </button>
+      </div>
+
+      <!-- Tarjetas resumen -->
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+        <div class="bg-white rounded-2xl p-5 shadow-sm">
+          <p class="font-body text-xs uppercase tracking-widest text-espresso/40 mb-1">Total productos</p>
+          <p class="font-heading text-3xl text-espresso">10</p>
+        </div>
+        <div class="bg-white rounded-2xl p-5 shadow-sm">
+          <p class="font-body text-xs uppercase tracking-widest text-espresso/40 mb-1">Categorías</p>
+          <p class="font-heading text-3xl text-espresso">5</p>
+        </div>
+        <div class="bg-white rounded-2xl p-5 shadow-sm">
+          <p class="font-body text-xs uppercase tracking-widest text-espresso/40 mb-1">Pedidos hoy</p>
+          <p class="font-heading text-3xl text-espresso">8</p>
+        </div>
+        <div class="bg-white rounded-2xl p-5 shadow-sm">
+          <p class="font-body text-xs uppercase tracking-widest text-espresso/40 mb-1">Ingresos hoy</p>
+          <p class="font-heading text-3xl text-espresso">$42k</p>
+        </div>
+      </div>
+
+      <!-- Barra de búsqueda y filtro -->
+      <div class="flex flex-col sm:flex-row gap-3 mb-6">
+        <input
+          type="text"
+          placeholder="Buscar producto..."
+          class="flex-1 font-body text-sm border border-rose-light rounded-xl px-4 py-2.5 text-espresso placeholder-espresso/30 focus:outline-none focus:border-rose-dark transition-colors bg-white"
+        />
+        <select class="font-body text-sm border border-rose-light rounded-xl px-4 py-2.5 text-espresso bg-white focus:outline-none focus:border-rose-dark transition-colors">
+          <option>Todas las categorías</option>
+          <option>Cafés e infusiones</option>
+          <option>Tortas y postres</option>
+          <option>Bebidas frías</option>
+          <option>Sándwiches</option>
+          <option>Combos</option>
+        </select>
+      </div>
+
+      <!-- Tabla de productos -->
+      <div class="bg-white rounded-2xl shadow-sm overflow-hidden">
+        <div class="overflow-x-auto">
+          <table class="w-full">
+            <thead>
+              <tr class="border-b border-rose-light">
+                <th class="font-body text-[11px] uppercase tracking-widest text-espresso/40 text-left px-6 py-4">Producto</th>
+                <th class="font-body text-[11px] uppercase tracking-widest text-espresso/40 text-left px-6 py-4 hidden sm:table-cell">Categoría</th>
+                <th class="font-body text-[11px] uppercase tracking-widest text-espresso/40 text-left px-6 py-4">Precio</th>
+                <th class="font-body text-[11px] uppercase tracking-widest text-espresso/40 text-left px-6 py-4 hidden md:table-cell">Stock</th>
+                <th class="font-body text-[11px] uppercase tracking-widest text-espresso/40 text-left px-6 py-4">Acciones</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-rose-light/50">
+
+              <!-- Fila 1 -->
+              <tr class="hover:bg-cream transition-colors">
+                <td class="px-6 py-4">
+                  <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 shrink-0 bg-rose-light/50 rounded-lg flex items-center justify-center text-xl">☕</div>
+                    <span class="font-body text-sm text-espresso">Latte artesanal</span>
+                  </div>
+                </td>
+                <td class="px-6 py-4 hidden sm:table-cell">
+                  <span class="font-body text-xs bg-rose-light/40 text-rose-dark px-3 py-1 rounded-full">Cafés</span>
+                </td>
+                <td class="px-6 py-4 font-body text-sm text-espresso">$2.500</td>
+                <td class="px-6 py-4 hidden md:table-cell">
+                  <span class="font-body text-xs bg-green-50 text-green-600 px-3 py-1 rounded-full">Disponible</span>
+                </td>
+                <td class="px-6 py-4">
+                  <div class="flex items-center gap-2">
+                    <button onclick="document.getElementById('modal').classList.remove('hidden')" class="font-body text-xs uppercase tracking-widest text-espresso/40 hover:text-rose-dark transition-colors border border-rose-light hover:border-rose-dark px-3 py-1.5 rounded-lg">Editar</button>
+                    <button class="font-body text-xs uppercase tracking-widest text-espresso/40 hover:text-red-400 transition-colors border border-rose-light hover:border-red-300 px-3 py-1.5 rounded-lg">Eliminar</button>
+                  </div>
+                </td>
+              </tr>
+
+              <!-- Fila 2 -->
+              <tr class="hover:bg-cream transition-colors">
+                <td class="px-6 py-4">
+                  <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 shrink-0 bg-rose-light/40 rounded-lg flex items-center justify-center text-xl">☕</div>
+                    <span class="font-body text-sm text-espresso">Cappuccino</span>
+                  </div>
+                </td>
+                <td class="px-6 py-4 hidden sm:table-cell">
+                  <span class="font-body text-xs bg-rose-light/40 text-rose-dark px-3 py-1 rounded-full">Cafés</span>
+                </td>
+                <td class="px-6 py-4 font-body text-sm text-espresso">$2.200</td>
+                <td class="px-6 py-4 hidden md:table-cell">
+                  <span class="font-body text-xs bg-green-50 text-green-600 px-3 py-1 rounded-full">Disponible</span>
+                </td>
+                <td class="px-6 py-4">
+                  <div class="flex items-center gap-2">
+                    <button onclick="document.getElementById('modal').classList.remove('hidden')" class="font-body text-xs uppercase tracking-widest text-espresso/40 hover:text-rose-dark transition-colors border border-rose-light hover:border-rose-dark px-3 py-1.5 rounded-lg">Editar</button>
+                    <button class="font-body text-xs uppercase tracking-widest text-espresso/40 hover:text-red-400 transition-colors border border-rose-light hover:border-red-300 px-3 py-1.5 rounded-lg">Eliminar</button>
+                  </div>
+                </td>
+              </tr>
+
+              <!-- Fila 3 -->
+              <tr class="hover:bg-cream transition-colors">
+                <td class="px-6 py-4">
+                  <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 shrink-0 bg-rose/30 rounded-lg flex items-center justify-center text-xl">🍰</div>
+                    <span class="font-body text-sm text-espresso">Torta de frambuesa</span>
+                  </div>
+                </td>
+                <td class="px-6 py-4 hidden sm:table-cell">
+                  <span class="font-body text-xs bg-rose-light/40 text-rose-dark px-3 py-1 rounded-full">Tortas</span>
+                </td>
+                <td class="px-6 py-4 font-body text-sm text-espresso">$4.800</td>
+                <td class="px-6 py-4 hidden md:table-cell">
+                  <span class="font-body text-xs bg-green-50 text-green-600 px-3 py-1 rounded-full">Disponible</span>
+                </td>
+                <td class="px-6 py-4">
+                  <div class="flex items-center gap-2">
+                    <button onclick="document.getElementById('modal').classList.remove('hidden')" class="font-body text-xs uppercase tracking-widest text-espresso/40 hover:text-rose-dark transition-colors border border-rose-light hover:border-rose-dark px-3 py-1.5 rounded-lg">Editar</button>
+                    <button class="font-body text-xs uppercase tracking-widest text-espresso/40 hover:text-red-400 transition-colors border border-rose-light hover:border-red-300 px-3 py-1.5 rounded-lg">Eliminar</button>
+                  </div>
+                </td>
+              </tr>
+
+              <!-- Fila 4 -->
+              <tr class="hover:bg-cream transition-colors">
+                <td class="px-6 py-4">
+                  <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 shrink-0 bg-rose/20 rounded-lg flex items-center justify-center text-xl">🍫</div>
+                    <span class="font-body text-sm text-espresso">Brownie con dulce de leche</span>
+                  </div>
+                </td>
+                <td class="px-6 py-4 hidden sm:table-cell">
+                  <span class="font-body text-xs bg-rose-light/40 text-rose-dark px-3 py-1 rounded-full">Tortas</span>
+                </td>
+                <td class="px-6 py-4 font-body text-sm text-espresso">$3.200</td>
+                <td class="px-6 py-4 hidden md:table-cell">
+                  <span class="font-body text-xs bg-yellow-50 text-yellow-600 px-3 py-1 rounded-full">Últimas unidades</span>
+                </td>
+                <td class="px-6 py-4">
+                  <div class="flex items-center gap-2">
+                    <button onclick="document.getElementById('modal').classList.remove('hidden')" class="font-body text-xs uppercase tracking-widest text-espresso/40 hover:text-rose-dark transition-colors border border-rose-light hover:border-rose-dark px-3 py-1.5 rounded-lg">Editar</button>
+                    <button class="font-body text-xs uppercase tracking-widest text-espresso/40 hover:text-red-400 transition-colors border border-rose-light hover:border-red-300 px-3 py-1.5 rounded-lg">Eliminar</button>
+                  </div>
+                </td>
+              </tr>
+
+              <!-- Fila 5 -->
+              <tr class="hover:bg-cream transition-colors">
+                <td class="px-6 py-4">
+                  <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 shrink-0 bg-rose-light/30 rounded-lg flex items-center justify-center text-xl">🥤</div>
+                    <span class="font-body text-sm text-espresso">Limonada de frutos rojos</span>
+                  </div>
+                </td>
+                <td class="px-6 py-4 hidden sm:table-cell">
+                  <span class="font-body text-xs bg-rose-light/40 text-rose-dark px-3 py-1 rounded-full">Bebidas frías</span>
+                </td>
+                <td class="px-6 py-4 font-body text-sm text-espresso">$2.800</td>
+                <td class="px-6 py-4 hidden md:table-cell">
+                  <span class="font-body text-xs bg-green-50 text-green-600 px-3 py-1 rounded-full">Disponible</span>
+                </td>
+                <td class="px-6 py-4">
+                  <div class="flex items-center gap-2">
+                    <button onclick="document.getElementById('modal').classList.remove('hidden')" class="font-body text-xs uppercase tracking-widest text-espresso/40 hover:text-rose-dark transition-colors border border-rose-light hover:border-rose-dark px-3 py-1.5 rounded-lg">Editar</button>
+                    <button class="font-body text-xs uppercase tracking-widest text-espresso/40 hover:text-red-400 transition-colors border border-rose-light hover:border-red-300 px-3 py-1.5 rounded-lg">Eliminar</button>
+                  </div>
+                </td>
+              </tr>
+
+              <!-- Fila 6 -->
+              <tr class="hover:bg-cream transition-colors">
+                <td class="px-6 py-4">
+                  <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 shrink-0 bg-rose-dark/10 rounded-lg flex items-center justify-center text-xl">🧋</div>
+                    <span class="font-body text-sm text-espresso">Frappé de vainilla</span>
+                  </div>
+                </td>
+                <td class="px-6 py-4 hidden sm:table-cell">
+                  <span class="font-body text-xs bg-rose-light/40 text-rose-dark px-3 py-1 rounded-full">Bebidas frías</span>
+                </td>
+                <td class="px-6 py-4 font-body text-sm text-espresso">$3.500</td>
+                <td class="px-6 py-4 hidden md:table-cell">
+                  <span class="font-body text-xs bg-red-50 text-red-400 px-3 py-1 rounded-full">Sin stock</span>
+                </td>
+                <td class="px-6 py-4">
+                  <div class="flex items-center gap-2">
+                    <button onclick="document.getElementById('modal').classList.remove('hidden')" class="font-body text-xs uppercase tracking-widest text-espresso/40 hover:text-rose-dark transition-colors border border-rose-light hover:border-rose-dark px-3 py-1.5 rounded-lg">Editar</button>
+                    <button class="font-body text-xs uppercase tracking-widest text-espresso/40 hover:text-red-400 transition-colors border border-rose-light hover:border-red-300 px-3 py-1.5 rounded-lg">Eliminar</button>
+                  </div>
+                </td>
+              </tr>
+
+              <!-- Fila 7 -->
+              <tr class="hover:bg-cream transition-colors">
+                <td class="px-6 py-4">
+                  <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 shrink-0 bg-rose-light/50 rounded-lg flex items-center justify-center text-xl">🥪</div>
+                    <span class="font-body text-sm text-espresso">Sándwich caprese</span>
+                  </div>
+                </td>
+                <td class="px-6 py-4 hidden sm:table-cell">
+                  <span class="font-body text-xs bg-rose-light/40 text-rose-dark px-3 py-1 rounded-full">Sándwiches</span>
+                </td>
+                <td class="px-6 py-4 font-body text-sm text-espresso">$3.900</td>
+                <td class="px-6 py-4 hidden md:table-cell">
+                  <span class="font-body text-xs bg-green-50 text-green-600 px-3 py-1 rounded-full">Disponible</span>
+                </td>
+                <td class="px-6 py-4">
+                  <div class="flex items-center gap-2">
+                    <button onclick="document.getElementById('modal').classList.remove('hidden')" class="font-body text-xs uppercase tracking-widest text-espresso/40 hover:text-rose-dark transition-colors border border-rose-light hover:border-rose-dark px-3 py-1.5 rounded-lg">Editar</button>
+                    <button class="font-body text-xs uppercase tracking-widest text-espresso/40 hover:text-red-400 transition-colors border border-rose-light hover:border-red-300 px-3 py-1.5 rounded-lg">Eliminar</button>
+                  </div>
+                </td>
+              </tr>
+
+              <!-- Fila 8 -->
+              <tr class="hover:bg-cream transition-colors">
+                <td class="px-6 py-4">
+                  <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 shrink-0 bg-rose/25 rounded-lg flex items-center justify-center text-xl">🥑</div>
+                    <span class="font-body text-sm text-espresso">Tostado de palta</span>
+                  </div>
+                </td>
+                <td class="px-6 py-4 hidden sm:table-cell">
+                  <span class="font-body text-xs bg-rose-light/40 text-rose-dark px-3 py-1 rounded-full">Sándwiches</span>
+                </td>
+                <td class="px-6 py-4 font-body text-sm text-espresso">$4.200</td>
+                <td class="px-6 py-4 hidden md:table-cell">
+                  <span class="font-body text-xs bg-green-50 text-green-600 px-3 py-1 rounded-full">Disponible</span>
+                </td>
+                <td class="px-6 py-4">
+                  <div class="flex items-center gap-2">
+                    <button onclick="document.getElementById('modal').classList.remove('hidden')" class="font-body text-xs uppercase tracking-widest text-espresso/40 hover:text-rose-dark transition-colors border border-rose-light hover:border-rose-dark px-3 py-1.5 rounded-lg">Editar</button>
+                    <button class="font-body text-xs uppercase tracking-widest text-espresso/40 hover:text-red-400 transition-colors border border-rose-light hover:border-red-300 px-3 py-1.5 rounded-lg">Eliminar</button>
+                  </div>
+                </td>
+              </tr>
+
+              <!-- Fila 9 -->
+              <tr class="hover:bg-cream transition-colors">
+                <td class="px-6 py-4">
+                  <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 shrink-0 bg-rose-dark/15 rounded-lg flex items-center justify-center text-xl">🎁</div>
+                    <span class="font-body text-sm text-espresso">Combo mañana</span>
+                  </div>
+                </td>
+                <td class="px-6 py-4 hidden sm:table-cell">
+                  <span class="font-body text-xs bg-rose-light/40 text-rose-dark px-3 py-1 rounded-full">Combos</span>
+                </td>
+                <td class="px-6 py-4 font-body text-sm text-espresso">$5.500</td>
+                <td class="px-6 py-4 hidden md:table-cell">
+                  <span class="font-body text-xs bg-green-50 text-green-600 px-3 py-1 rounded-full">Disponible</span>
+                </td>
+                <td class="px-6 py-4">
+                  <div class="flex items-center gap-2">
+                    <button onclick="document.getElementById('modal').classList.remove('hidden')" class="font-body text-xs uppercase tracking-widest text-espresso/40 hover:text-rose-dark transition-colors border border-rose-light hover:border-rose-dark px-3 py-1.5 rounded-lg">Editar</button>
+                    <button class="font-body text-xs uppercase tracking-widest text-espresso/40 hover:text-red-400 transition-colors border border-rose-light hover:border-red-300 px-3 py-1.5 rounded-lg">Eliminar</button>
+                  </div>
+                </td>
+              </tr>
+
+              <!-- Fila 10 -->
+              <tr class="hover:bg-cream transition-colors">
+                <td class="px-6 py-4">
+                  <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 shrink-0 bg-rose-light/60 rounded-lg flex items-center justify-center text-xl">💝</div>
+                    <span class="font-body text-sm text-espresso">Combo para dos</span>
+                  </div>
+                </td>
+                <td class="px-6 py-4 hidden sm:table-cell">
+                  <span class="font-body text-xs bg-rose-light/40 text-rose-dark px-3 py-1 rounded-full">Combos</span>
+                </td>
+                <td class="px-6 py-4 font-body text-sm text-espresso">$8.900</td>
+                <td class="px-6 py-4 hidden md:table-cell">
+                  <span class="font-body text-xs bg-yellow-50 text-yellow-600 px-3 py-1 rounded-full">Últimas unidades</span>
+                </td>
+                <td class="px-6 py-4">
+                  <div class="flex items-center gap-2">
+                    <button onclick="document.getElementById('modal').classList.remove('hidden')" class="font-body text-xs uppercase tracking-widest text-espresso/40 hover:text-rose-dark transition-colors border border-rose-light hover:border-rose-dark px-3 py-1.5 rounded-lg">Editar</button>
+                    <button class="font-body text-xs uppercase tracking-widest text-espresso/40 hover:text-red-400 transition-colors border border-rose-light hover:border-red-300 px-3 py-1.5 rounded-lg">Eliminar</button>
+                  </div>
+                </td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </main>
+  
+
+
+
+
+
+
+
+
+
+    </main>
+
+    <!---------------------------------------------------------->
+    
+    <footer class="bg-espresso text-rose-light pt-12 pb-6">
+        <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8 pb-8 border-b border-rose-dark/30">
+            <div>
+                <p class="font-heading text-xl text-rose mb-3">La Vie En Rose</p>
+                <p class="font-body text-sm text-rose-light/60 leading-relaxed">Cafetería artesanal en el corazón de San Salvador de Jujuy.</p>
+            </div>
+
+            <div>
+                <p class="font-body text-xs uppercase tracking-widest text-rose mb-3">Menú</p>
+                <ul class="space-y-2">
+                    <li><a href="catalogo.html" class="font-body text-sm text-rose-light/60 hover:text-rose transition-colors">Cafés e infusiones</a></li>
+                    <li><a href="catalogo.html" class="font-body text-sm text-rose-light/60 hover:text-rose transition-colors">Tortas y postres</a></li>
+                    <li><a href="catalogo.html" class="font-body text-sm text-rose-light/60 hover:text-rose transition-colors">Sándwiches</a></li>
+                    <li><a href="catalogo.html" class="font-body text-sm text-rose-light/60 hover:text-rose transition-colors">Combos</a></li>
+                </ul>
+            </div>
+            <div>
+                <p class="font-body text-xs uppercase tracking-widest text-rose mb-3">Contacto</p>
+                <ul class="space-y-2">
+                    <li class="font-body text-sm text-rose-light/60">📍 San Salvador de Jujuy</li>
+                    <li><a href="https://www.instagram.com/lavieenrosejujuy" class="font-body text-sm text-rose-light/60 hover:text-rose transition-colors">📷 @lavieenrosejujuy</a></li>
+                </ul>
+            </div>
+        </div>
+        <p class="text-center font-body text-xs text-rose-light/30 pt-6">© 2026 La Vie En Rose · Todos los derechos reservados</p>
+    </footer>
+</body>
+</html>
+
+
+
+

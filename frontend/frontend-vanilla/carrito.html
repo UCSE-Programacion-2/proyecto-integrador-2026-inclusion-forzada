@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>La Vie En Rose</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            rose:    { light: '#f0d0da', DEFAULT: '#e8a0b4', dark: '#c97a8d' },
+            cream:   '#fff5f7',
+            espresso:'#3a2027',
+          },
+          fontFamily: {
+            heading: ['"Playfair Display"', 'serif'],
+            body:    ['Lato', 'sans-serif'],
+          },
+        },
+      },
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+</head>
+
+<body class="bg-cream">
+    <nav class="bg-cream border-b border-rose-light">
+        <div class="max-w-6xl mx-auto px-6 flex items-center justify-between h-16">
+            <a href="index.html" class="font-heading text-2xl text-rose-dark tracking-wide">
+                La Vie En Rose 
+            </a>
+            <div class="hidden md:flex items-center gap-8">
+                <a href="index.html"    class="font-body text-xs uppercase tracking-widest text-espresso hover:text-rose-dark transition-colors">Inicio</a>
+                <a href="catalogo.html" class="font-body text-xs uppercase tracking-widest text-espresso hover:text-rose-dark transition-colors">Menú</a>
+                <a href="carrito.html"  class="flex items-center gap-2 font-body text-xs uppercase tracking-widest text-espresso hover:text-rose-dark transition-colors">Carrito</a>
+            </div>
+            <button class="md:hidden text-espresso" aria-label="Abrir menú">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <!---------------------------------------------------------->
+
+    <main class="max-w-6xl mx-auto px-6 py-12">
+ 
+    <!-- Encabezado -->
+    <div class="mb-10">
+      <p class="font-body text-xs uppercase tracking-[0.25em] text-rose-dark mb-1">Tu pedido</p>
+      <h1 class="font-heading text-4xl text-espresso">Carrito</h1>
+    </div>
+ 
+    <div class="flex flex-col lg:flex-row gap-10">
+ 
+      <!-- ===== LISTA DE PRODUCTOS ===== -->
+      <section class="flex-1">
+ 
+        <article class="bg-white rounded-2xl p-5 flex gap-5 items-center shadow-sm mb-4">
+          <div class="w-20 h-20 shrink-0 bg-rose-light/50 rounded-xl flex items-center justify-center text-4xl">
+            ☕
+          </div>
+          <div class="flex-1 min-w-0">
+            <span class="font-body text-[11px] uppercase tracking-widest text-rose-dark">Cafés</span>
+            <h3 class="font-heading text-lg text-espresso leading-tight">Latte artesanal</h3>
+            <p class="font-body text-xs text-espresso/40 mt-0.5">Espresso doble con leche vaporizada.</p>
+          </div>
+          <div class="flex flex-col items-end gap-3 shrink-0">
+            <p class="font-body font-bold text-espresso">$2.500</p>
+            <div class="flex items-center border border-rose-light rounded-full overflow-hidden">
+              <button class="px-3 py-1 font-body text-espresso hover:bg-rose-light/40 transition-colors text-sm">−</button>
+              <span class="px-3 py-1 font-body text-sm text-espresso border-x border-rose-light">1</span>
+              <button class="px-3 py-1 font-body text-espresso hover:bg-rose-light/40 transition-colors text-sm">+</button>
+            </div>
+          </div>
+          <button class="shrink-0 text-espresso/20 hover:text-rose-dark transition-colors ml-2" aria-label="Eliminar producto">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+          </button>
+        </article>
+ 
+        <article class="bg-white rounded-2xl p-5 flex gap-5 items-center shadow-sm mb-4">
+          <div class="w-20 h-20 shrink-0 bg-rose-light/50 rounded-xl flex items-center justify-center text-4xl">
+            ☕
+          </div>
+          <div class="flex-1 min-w-0">
+            <span class="font-body text-[11px] uppercase tracking-widest text-rose-dark">Cafés</span>
+            <h3 class="font-heading text-lg text-espresso leading-tight">Latte artesanal</h3>
+            <p class="font-body text-xs text-espresso/40 mt-0.5">Espresso doble con leche vaporizada.</p>
+          </div>
+          <div class="flex flex-col items-end gap-3 shrink-0">
+            <p class="font-body font-bold text-espresso">$2.500</p>
+            <div class="flex items-center border border-rose-light rounded-full overflow-hidden">
+              <button class="px-3 py-1 font-body text-espresso hover:bg-rose-light/40 transition-colors text-sm">−</button>
+              <span class="px-3 py-1 font-body text-sm text-espresso border-x border-rose-light">1</span>
+              <button class="px-3 py-1 font-body text-espresso hover:bg-rose-light/40 transition-colors text-sm">+</button>
+            </div>
+          </div>
+          <button class="shrink-0 text-espresso/20 hover:text-rose-dark transition-colors ml-2" aria-label="Eliminar producto">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+          </button>
+        </article>
+ 
+        <!-- Links bottom -->
+        <div class="flex justify-between items-center mt-6">
+          <a href="catalogo.html" class="font-body text-xs uppercase tracking-widest text-espresso/40 hover:text-rose-dark transition-colors">
+            ← Seguir comprando
+          </a>
+          <button class="font-body text-xs uppercase tracking-widest text-espresso/40 hover:text-rose-dark transition-colors">
+            Vaciar carrito
+          </button>
+        </div>
+ 
+      </section>
+ 
+      <!-- ===== RESUMEN DEL PEDIDO ===== -->
+      <aside class="w-full lg:w-80 shrink-0">
+        <div class="bg-white rounded-2xl p-6 shadow-sm">
+ 
+          <p class="font-heading text-xl text-espresso mb-6">Resumen</p>
+ 
+          <div class="space-y-3 mb-6">
+            <div class="flex justify-between font-body text-sm text-espresso/60">
+              <span>Latte artesanal × 1</span>
+              <span>$2.500</span>
+            </div>
+            <div class="flex justify-between font-body text-sm text-espresso/60">
+              <span>Latte artesanal × 1</span>
+              <span>$2.500</span>
+            </div>
+          </div>
+ 
+          <div class="border-t border-rose-light pt-4 space-y-3 mb-6">
+            <div class="flex justify-between font-body text-sm text-espresso/60">
+              <span>Subtotal</span>
+              <span>$5.000</span>
+            </div>
+          </div>
+ 
+          <div class="border-t border-rose-light pt-4 mb-8">
+            <div class="flex justify-between items-center">
+              <span class="font-body text-sm font-bold text-espresso">Total</span>
+              <span class="font-heading text-2xl text-espresso">$5.000</span>
+            </div>
+          </div>
+          <a
+            href="checkout.html"
+            class="block text-center font-body text-xs uppercase tracking-widest bg-rose-dark hover:bg-rose transition-colors text-white px-8 py-4 rounded-full"
+          >
+            Pagar →
+          </a>
+ 
+        </div>
+      </aside>
+ 
+    </div>
+  </main>
+
+    <!---------------------------------------------------------->
+    
+    <footer class="bg-espresso text-rose-light pt-12 pb-6">
+        <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8 pb-8 border-b border-rose-dark/30">
+            <div>
+                <p class="font-heading text-xl text-rose mb-3">La Vie En Rose</p>
+                <p class="font-body text-sm text-rose-light/60 leading-relaxed">Cafetería artesanal en el corazón de San Salvador de Jujuy.</p>
+            </div>
+
+            <div>
+                <p class="font-body text-xs uppercase tracking-widest text-rose mb-3">Menú</p>
+                <ul class="space-y-2">
+                    <li><a href="catalogo.html" class="font-body text-sm text-rose-light/60 hover:text-rose transition-colors">Cafés e infusiones</a></li>
+                    <li><a href="catalogo.html" class="font-body text-sm text-rose-light/60 hover:text-rose transition-colors">Tortas y postres</a></li>
+                    <li><a href="catalogo.html" class="font-body text-sm text-rose-light/60 hover:text-rose transition-colors">Sándwiches</a></li>
+                    <li><a href="catalogo.html" class="font-body text-sm text-rose-light/60 hover:text-rose transition-colors">Combos</a></li>
+                </ul>
+            </div>
+            <div>
+                <p class="font-body text-xs uppercase tracking-widest text-rose mb-3">Contacto</p>
+                <ul class="space-y-2">
+                    <li class="font-body text-sm text-rose-light/60">📍 San Salvador de Jujuy</li>
+                    <li><a href="https://www.instagram.com/lavieenrosejujuy" class="font-body text-sm text-rose-light/60 hover:text-rose transition-colors">📷 @lavieenrosejujuy</a></li>
+                </ul>
+            </div>
+        </div>
+        <p class="text-center font-body text-xs text-rose-light/30 pt-6">© 2026 La Vie En Rose · Todos los derechos reservados</p>
+    </footer>
+</body>
+</html>
+
+
+
+
