@@ -1,9 +1,12 @@
+
 const dns = require('dns');
+
 
 dns.setServers(['1.1.1.1', '8.8.8.8']);
 
 const express = require('express');
 const conectarDB = require('./config/db');
+const authRoutes = require('./routes/authRoutes');
 
 require('dotenv').config();
 
@@ -12,6 +15,8 @@ const app = express();
 conectarDB();
 
 app.use(express.json());
+
+app.use('/api/auth', authRoutes);
 
 app.get('/', (req, res) => {
   res.status(200).json({
