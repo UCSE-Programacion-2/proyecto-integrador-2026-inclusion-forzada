@@ -6,6 +6,9 @@
 **/.env.*
 **/.env.*.*
 
+# Permitir archivos de ejemplo
+!**/.env.example
+
 # Archivos del sistema
 .DS_Store
 Thumbs.db
@@ -22,5 +25,4 @@ yarn-error.log*
 
 # Builds / dist
 **/dist/
-**/build/
-
+**/build/S
